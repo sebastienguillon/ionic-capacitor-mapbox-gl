@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "ionic-capacitor-mapbox-gl",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

@@ -1,0 +1,7 @@
+{
+  "name": "ionic-capacitor-mapbox-gl",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
