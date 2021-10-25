@@ -2,11 +2,8 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 
 // Mapbox GL
 import {
-  LngLatLike,
   Map,
   MapboxOptions,
-  Marker,
-  NavigationControl,
 } from 'mapbox-gl';
 
 @Component({

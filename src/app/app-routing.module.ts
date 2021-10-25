@@ -15,6 +15,14 @@ const routes: Routes = [
     path: 'map',
     loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
   },
+  {
+    path: 'data1',
+    loadChildren: () => import('./data1/data1.module').then( m => m.Data1PageModule)
+  },
+  {
+    path: 'data2',
+    loadChildren: () => import('./data2/data2.module').then( m => m.Data2PageModule)
+  },
 ];
 
 @NgModule({
