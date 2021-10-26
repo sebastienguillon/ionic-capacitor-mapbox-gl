@@ -102,7 +102,8 @@ export class Data1Page implements AfterViewInit, OnInit {
           layout: {
             'icon-allow-overlap': true,
             'icon-image': ['get', 'imageUrl'],
-            ['icon-size']: [
+            'icon-size': defaultIconSize,
+            /*'icon-size': [
               'interpolate',
               ['exponential', 1],
               ['zoom'],
@@ -110,7 +111,7 @@ export class Data1Page implements AfterViewInit, OnInit {
               defaultIconSize / 2,
               10,
               defaultIconSize * 2,
-            ],
+            ],*/
             /*'icon-size': [
               'case',
               ['has', 'icon-size'],
@@ -133,7 +134,7 @@ export class Data1Page implements AfterViewInit, OnInit {
         };
 
         this.map?.addLayer(layer);
-        this.map?.on('click', layer.id, (ev: EventData) => {
+        /*this.map?.on('click', layer.id, (ev: EventData) => {
           console.log(`"click" event on layer "${layer.id}"`, ev);
 
           const featureId = ev.features[0].properties.Id;
@@ -152,7 +153,7 @@ export class Data1Page implements AfterViewInit, OnInit {
             });
             (source as GeoJSONSource).setData(parisBordeauxAreas);
           }
-        });
+        });*/
       });
     }
   }
