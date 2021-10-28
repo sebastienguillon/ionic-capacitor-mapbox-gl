@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import { parisBordeauxPoints, parisBordeauxAreas } from 'src/app/data';
 
@@ -16,7 +16,7 @@ import { MapService } from '../core/map.service';
   templateUrl: './data1.page.html',
   styleUrls: ['./data1.page.scss'],
 })
-export class Data1Page implements AfterViewInit, OnInit {
+export class Data1Page implements AfterViewInit, OnInit, OnDestroy {
   @ViewChild('mapContainer') mapContainer?: ElementRef<HTMLDivElement>;
   private map?: Map;
 
