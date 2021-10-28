@@ -18,13 +18,12 @@ export class Data2Page implements OnInit, AfterViewInit, OnDestroy {
   constructor(private mapService: MapService) { }
 
   ngOnInit() {
-    console.log(`MapPage ngOnInit()`);
-    console.log(`parisBordeauxAreas`, parisBordeauxAreas);
+    console.log(`Data2Page ngOnInit()`);
   }
 
   ngAfterViewInit() {
     this.initMap();
-    console.log(`MapPage ngAfterViewInit()`);
+    console.log(`Data2Page ngAfterViewInit()`);
   }
 
   ngOnDestroy() {
@@ -32,7 +31,7 @@ export class Data2Page implements OnInit, AfterViewInit, OnDestroy {
     if (this.vaMap?.mapInstance) {
       this.vaMap.mapInstance.remove();
     }
-    console.log(`MapPage ngOnDestroy(), map removed`);
+    console.log(`Data2Page ngOnDestroy(), map removed`);
   }
 
   private initMap(): void {
@@ -60,7 +59,7 @@ export class Data2Page implements OnInit, AfterViewInit, OnDestroy {
         container: this.mapContainer.nativeElement,
         style: 'mapbox://styles/mapbox/streets-v11',
         preserveDrawingBuffer: true,
-        bounds: bounds,
+        // bounds: bounds,
       };
   
       this.vaMap = VaMapboxPlugin.createMap(options);
@@ -69,6 +68,7 @@ export class Data2Page implements OnInit, AfterViewInit, OnDestroy {
         this.vaMap.ready()
         .then(
           () => {
+            console.log(`Map "load" event`);
             this.vaMap?.mapResize();
 
             this.vaMap?.mapInstance?.fitBounds([
@@ -88,7 +88,7 @@ export class Data2Page implements OnInit, AfterViewInit, OnDestroy {
         );
 
         this.subscriptions.add(this.vaMap.mapClicked().subscribe((event) => {
-          console.log(`Map "click" event`);
+          console.log(`Map "click" event`, event);
         }));
 
         this.subscriptions.add(this.vaMap.on('resize').subscribe((event) => {
@@ -105,17 +105,14 @@ export class Data2Page implements OnInit, AfterViewInit, OnDestroy {
   private addAreasLayer(): void {
     if (this.vaMap) {
       const images = this.mapService.extractUniqueImagesFromFeatureCollection(parisBordeauxAreas, 'imageUrl');
-      console.log(`images`, images);
       for (const imageUrl of images) {
         this.vaMap.loadAndAddImage(imageUrl, imageUrl); 
       }
-      console.log('images referenced');
 
       const areasLayer = this.vaMap.createLayer('areas', [MapFeatureType.Point], {
         pointAutoFocus: true,
-        defaultPointIconSize: 0.25,
-        selectedPointIconSize: 0.3,
-        // pointIconSizeAnimation: { from: 1, to: 1.5, step: 0.06 },
+        defaultPointIconSize: 0.2,
+        selectedPointIconSize: 0.25,
         setSelectedFeatureProperty: true,
       });
 
